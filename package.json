@@ -1,5 +1,5 @@
 {
-  "name": "sequelize-typescript-migration-lts",
+  "name": "@maxweek/sequelize-typescript-migration-lts-fixed",
   "version": "3.2.6",
   "description": "migration tool for sequelize & typescript users",
   "keywords": [
@@ -32,7 +32,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mmRoshani/sequelize-typescript-migration.git"
+    "url": "https://github.com/maxweek/sequelize-typescript-migration"
   },
   "author": "mohammadmojtabaroshani@outlook.com",
   "license": "MIT",
