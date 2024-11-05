@@ -126,6 +126,7 @@ module.exports = {
           let command = migrationCommands[index];
           console.log("[#"+index+"] execute: " + command.fn);
           index++;
+          console.log('queryInterface', queryInterface[command.fn])
           queryInterface[command.fn].apply(queryInterface, command.params).then(next, reject);
         } else resolve();
       }
@@ -142,6 +143,7 @@ module.exports = {
           let command = rollbackCommands[index];
           console.log("[#"+index+"] execute: " + command.fn);
           index++;
+          console.log('queryInterface', queryInterface[command.fn])
           queryInterface[command.fn].apply(queryInterface, command.params).then(next, reject);
         }
         else resolve();
