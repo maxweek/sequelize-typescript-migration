@@ -90,8 +90,16 @@ export class SequelizeTypescriptMigration {
 
     migration.commandsDown = tmp.commandsUp;
 
+    const _INFO = {
+      actions: migration.consoleOut, 
+      up: migration.commandsUp, 
+      down: migration.commandsDown,
+      previousState,
+      currentState,
+    }
+
     if (migration.commandsUp.length === 0)
-      return Promise.resolve({ msg: "success: no changes found" });
+      return Promise.resolve({ msg: "success: no changes found", code: 0, info: _INFO });
 
     // log
     migration.consoleOut.forEach((v) => {
@@ -106,7 +114,7 @@ export class SequelizeTypescriptMigration {
         beautify(`[ \n${migration.commandsDown.join(", \n")} \n];\n`)
       );
 
-      return Promise.resolve({ msg: "success without save", actions: migration.consoleOut, up: migration.commandsUp, down: migration.commandsDown });
+      return Promise.resolve({ msg: "success without save", code: 1, info: _INFO });
     }
 
     const info = await writeMigration(currentState, migration, options);
@@ -135,11 +143,11 @@ export class SequelizeTypescriptMigration {
         info.info.name
       }.js ${`--migrations-path=${options.outDir}`} `);
 
-      return await Promise.resolve({ msg: "success" });
+      return await Promise.resolve({ msg: "success", code: 2, info: _INFO });
     } catch (err) {
       if (options.debug) console.error(err);
     }
 
-    return Promise.resolve({ msg: "success anyway..." });
+    return Promise.resolve({ msg: "success anyway...", code: 3, info: _INFO });
   };
 }
