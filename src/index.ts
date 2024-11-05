@@ -135,7 +135,7 @@ export class SequelizeTypescriptMigration {
         info.info.name
       }.js ${`--migrations-path=${options.outDir}`} `);
 
-      return await Promise.resolve({ msg: "success", name: `${info.revisionNumber}-${info.info.name}.js`, path: options.outDir, actions: migration.consoleOut, up: migration.commandsUp, down: migration.commandsDown });
+      return await Promise.resolve({ msg: "success" });
     } catch (err) {
       if (options.debug) console.error(err);
     }
