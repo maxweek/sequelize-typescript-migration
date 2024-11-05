@@ -1,6 +1,6 @@
 {
   "name": "@maxweek/sequelize-typescript-migration-lts-fixed",
-  "version": "3.2.10",
+  "version": "3.2.11",
   "description": "migration tool for sequelize & typescript users",
   "keywords": [
     "sequelize",
