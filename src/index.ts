@@ -106,7 +106,7 @@ export class SequelizeTypescriptMigration {
         beautify(`[ \n${migration.commandsDown.join(", \n")} \n];\n`)
       );
 
-      return Promise.resolve({ msg: "success without save" });
+      return Promise.resolve({ msg: "success without save", actions: migration.consoleOut, up: migration.commandsUp, down: migration.commandsDown });
     }
 
     const info = await writeMigration(currentState, migration, options);
@@ -135,7 +135,7 @@ export class SequelizeTypescriptMigration {
         info.info.name
       }.js ${`--migrations-path=${options.outDir}`} `);
 
-      return await Promise.resolve({ msg: "success" });
+      return await Promise.resolve({ msg: "success", name: `${info.revisionNumber}-${info.info.name}.js`, path: options.outDir, actions: migration.consoleOut, up: migration.commandsUp, down: migration.commandsDown });
     } catch (err) {
       if (options.debug) console.error(err);
     }
