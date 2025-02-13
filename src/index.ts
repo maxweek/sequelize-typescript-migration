@@ -107,12 +107,12 @@ export class SequelizeTypescriptMigration {
     });
 
     if (options.preview) {
-      console.log("Migration result:");
-      console.log(beautify(`[ \n${migration.commandsUp.join(", \n")} \n];\n`));
-      console.log("Undo commands:");
-      console.log(
-        beautify(`[ \n${migration.commandsDown.join(", \n")} \n];\n`)
-      );
+      // console.log("Migration result:");
+      // console.log(beautify(`[ \n${migration.commandsUp.join(", \n")} \n];\n`));
+      // console.log("Undo commands:");
+      // console.log(
+      //   beautify(`[ \n${migration.commandsDown.join(", \n")} \n];\n`)
+      // );
 
       return Promise.resolve({ msg: "success without save", code: 1, info: _INFO });
     }
